@@ -26,4 +26,4 @@ const validate = data => {
         password: joi.string().required().label("Password")
     })
     return schema.validate(data);
-}
+};
