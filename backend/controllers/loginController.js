@@ -1,4 +1,4 @@
-const {User} = require('../models/user');
+const { User } = require('../models/user');
 const joi = require("joi");
 
 
@@ -19,3 +19,11 @@ exports.login = async (req, res) => {
         res.status(500).send({ message: 'An error has occured when logging in' });
     }
 };
+
+const validate = data => {
+    const schema = joi.object({
+        username: joi.string().alphanum().min(5).max(15).required().label("Username"),
+        password: joi.string().required().label("Password")
+    })
+    return schema.validate(data);
+}
