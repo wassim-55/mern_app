@@ -14,7 +14,7 @@ exports.login = async (req, res) => {
         if (!passwordMatch)
             return res.status(401).send({ message: "Invalid Username or Password"});
         const token = user.generateAuthToken();
-        res.status(200).send({ message: "Logged in successfuly !"});
+        res.status(200).send({ token: token, message: "Logged in successfuly !"});
     } catch (error) {
         res.status(500).send({ message: 'An error has occured when logging in' });
     }
